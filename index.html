@@ -1,80 +1,197 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
   <title>Will You Be My Valentine? 💖</title>
 
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      background: linear-gradient(#ffdee9, #b5fffc);
-      font-family: 'Comic Sans MS', cursive;
+      margin: 0;
+      min-height: 100vh;
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+    }
+
+    .card {
+      background: #ffffff;
+      width: 90%;
+      max-width: 520px;
+      padding: 40px 30px;
+      border-radius: 24px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
       text-align: center;
-      padding-top: 50px;
+      animation: fadeIn 1s ease;
     }
 
     h1 {
-      font-size: 40px;
-      color: #ff3366;
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      margin-bottom: 12px;
+      color: #d6336c;
+    }
+
+    p {
+      font-size: 16px;
+      margin-bottom: 30px;
+      color: #555;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      margin-bottom: 30px;
     }
 
     button {
-      padding: 12px 24px;
-      margin: 10px;
-      font-size: 18px;
-      border-radius: 25px;
+      padding: 14px 26px;
+      border-radius: 30px;
       border: none;
+      font-size: 16px;
+      font-weight: 600;
       cursor: pointer;
+      transition: all 0.3s ease;
     }
 
-    .yes { background-color: #ff4d6d; color: white; }
-    .no { background-color: #adb5bd; }
+    .yes {
+      background: linear-gradient(135deg, #ff4d6d, #ff758f);
+      color: white;
+    }
+
+    .yes:hover {
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.5);
+    }
+
+    .no {
+      background: #f1f1f1;
+      color: #555;
+    }
+
+    .no:hover {
+      background: #e0e0e0;
+    }
+
+    .gifts {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .gifts h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin-bottom: 16px;
+      color: #d6336c;
+    }
+
+    .gift-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
 
     .gift {
-      background-color: #ffd166;
-      margin: 8px;
+      padding: 14px;
+      border-radius: 16px;
+      background: #fff0f3;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.25s ease;
+      border: 1px solid #ffd6de;
+    }
+
+    .gift:hover {
+      background: #ffccd5;
+      transform: translateY(-3px);
+    }
+
+    footer {
+      margin-top: 30px;
+      font-size: 13px;
+      color: #888;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <!-- 🎵 Background Music -->
+  <!-- Background music -->
   <audio autoplay loop>
-    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_6b9a8f9c62.mp3" type="audio/mpeg">
+    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
   </audio>
 
-  <h1>Will you be my Valentine? 💘</h1>
+  <div class="card">
+    <h1>Will you be my Valentine? 💖</h1>
+    <p>I promise lots of smiles, surprises, and unforgettable moments ✨</p>
 
-  <button class="yes" onclick="yesClicked()">Yes 💕</button>
-  <button class="no" onclick="moveNo(this)">No 🙈</button>
+    <div class="buttons">
+      <button class="yes" onclick="showGifts()">Yes 💕</button>
+      <button class="no" onclick="sayNo()">No 🙃</button>
+    </div>
 
-  <h2 id="giftText" style="display:none;">Choose your gift 🎁</h2>
+    <div class="gifts" id="gifts">
+      <h2>Choose your gift 🎁</h2>
+      <div class="gift-grid">
+        <div class="gift" onclick="submitGift('Running Shoes')">👟 Running Shoes</div>
+        <div class="gift" onclick="submitGift('New Dress')">👗 New Dress</div>
+        <div class="gift" onclick="submitGift('Jewellery')">💎 Jewellery</div>
+        <div class="gift" onclick="submitGift('Surprise')">🎉 Surprise</div>
+      </div>
+    </div>
 
-  <div id="gifts" style="display:none;">
-    <button class="gift" onclick="submitGift('Running Shoes')">👟 Running Shoes</button>
-    <button class="gift" onclick="submitGift('New Dress')">👗 New Dress</button>
-    <button class="gift" onclick="submitGift('Jewellery')">💍 Jewellery</button>
-    <button class="gift" onclick="submitGift('Surprise')">🎉 Surprise</button>
+    <footer>
+      Made with ❤️ just for you
+    </footer>
   </div>
 
   <script>
-    function yesClicked() {
-      document.getElementById("giftText").style.display = "block";
+    function showGifts() {
       document.getElementById("gifts").style.display = "block";
+
+      confetti({
+        particleCount: 150,
+        spread: 70,
+        origin: { y: 0.6 }
+      });
     }
 
-    function moveNo(btn) {
-      btn.style.position = "absolute";
-      btn.style.left = Math.random() * window.innerWidth + "px";
-      btn.style.top = Math.random() * window.innerHeight + "px";
+    function sayNo() {
+      alert("Are you sure? 😢 I’ll still be cute about it.");
     }
 
     function submitGift(gift) {
-      alert("Yay! ❤️ I can't wait!");
+      alert("Yay! ❤️ I can’t wait!");
 
-      // 👇 GOOGLE FORM SUBMISSION
-      window.location.href =
-        "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse?" +
-        "entry.123456=Yes&entry.654321=" + encodeURIComponent(gift);
+      const url =
+        "https://docs.google.com/forms/d/e/1FAIpQLSePfwmWDoO-galMXmkflOLfRigAGAdzQRXw0JxKXfw0HGX76A/formResponse?" +
+        "entry.865617330=Yes&entry.1924541378=" + encodeURIComponent(gift);
+
+      window.location.href = url;
     }
   </script>
 
