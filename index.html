@@ -1,89 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Will You Be My Valentine? 💖</title>
+  <meta charset="UTF-8">
+  <title>Be My Valentine 💾❤️</title>
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <!-- Retro Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
 
   <!-- Confetti -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
     body {
       margin: 0;
       min-height: 100vh;
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(135deg, #ffdde1, #ee9ca7);
+      background: linear-gradient(180deg, #120024, #2b004f);
       display: flex;
-      align-items: center;
       justify-content: center;
-      color: #333;
+      align-items: center;
+      color: #00ffe1;
+      font-family: 'VT323', monospace;
     }
 
-    .card {
-      background: #ffffff;
+    .container {
+      background: #000;
+      border: 4px solid #00ffe1;
+      padding: 30px;
       width: 90%;
       max-width: 520px;
-      padding: 40px 30px;
-      border-radius: 24px;
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.15);
       text-align: center;
-      animation: fadeIn 1s ease;
+      box-shadow: 0 0 25px #ff00ff;
     }
 
     h1 {
-      font-family: 'Playfair Display', serif;
-      font-size: 32px;
-      margin-bottom: 12px;
-      color: #d6336c;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 18px;
+      color: #ff00ff;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px #00ffe1;
     }
 
     p {
-      font-size: 16px;
-      margin-bottom: 30px;
-      color: #555;
+      font-size: 20px;
+      margin-bottom: 25px;
+      color: #00ffe1;
     }
 
     .buttons {
       display: flex;
-      gap: 16px;
       justify-content: center;
-      margin-bottom: 30px;
+      gap: 20px;
+      margin-bottom: 25px;
     }
 
     button {
-      padding: 14px 26px;
-      border-radius: 30px;
-      border: none;
-      font-size: 16px;
-      font-weight: 600;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 12px;
+      padding: 12px 20px;
       cursor: pointer;
-      transition: all 0.3s ease;
+      border: 3px solid #00ffe1;
+      background: #000;
+      color: #00ffe1;
+      transition: all 0.2s ease;
     }
 
-    .yes {
-      background: linear-gradient(135deg, #ff4d6d, #ff758f);
-      color: white;
-    }
-
-    .yes:hover {
-      transform: scale(1.05);
-      box-shadow: 0 10px 25px rgba(255, 77, 109, 0.5);
-    }
-
-    .no {
-      background: #f1f1f1;
-      color: #555;
+    button:hover {
+      background: #00ffe1;
+      color: #000;
+      box-shadow: 0 0 15px #00ffe1;
     }
 
     .no:hover {
-      background: #e0e0e0;
+      background: #ff004c;
+      border-color: #ff004c;
+      box-shadow: 0 0 15px #ff004c;
+      color: #000;
     }
 
     .gifts {
@@ -92,10 +83,10 @@
     }
 
     .gifts h2 {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
+      font-family: 'Press Start 2P', cursive;
+      font-size: 14px;
       margin-bottom: 16px;
-      color: #d6336c;
+      color: #ff00ff;
     }
 
     .gift-grid {
@@ -105,67 +96,52 @@
     }
 
     .gift {
+      border: 3px solid #ff00ff;
       padding: 14px;
-      border-radius: 16px;
-      background: #fff0f3;
-      font-weight: 500;
       cursor: pointer;
-      transition: all 0.25s ease;
-      border: 1px solid #ffd6de;
+      transition: all 0.2s ease;
+      background: #000;
+      color: #ff00ff;
+      font-size: 18px;
     }
 
     .gift:hover {
-      background: #ffccd5;
-      transform: translateY(-3px);
+      background: #ff00ff;
+      color: #000;
+      box-shadow: 0 0 15px #ff00ff;
     }
 
     footer {
-      margin-top: 30px;
-      font-size: 13px;
-      color: #888;
-    }
-
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      margin-top: 25px;
+      font-size: 16px;
+      color: #777;
     }
   </style>
 </head>
 
 <body>
 
-  <!-- Background music -->
-  <audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-love.mp3" type="audio/mpeg">
-  </audio>
-
-  <div class="card">
-    <h1>Will you be my Valentine? 💖</h1>
-    <p>I promise lots of smiles, surprises, and unforgettable moments ✨</p>
+  <div class="container">
+    <h1>PLAYER 2 JOIN?</h1>
+    <p>Will you be my Valentine? 💖</p>
 
     <div class="buttons">
-      <button class="yes" onclick="showGifts()">Yes 💕</button>
-      <button class="no" onclick="sayNo()">No 🙃</button>
+      <button onclick="showGifts()">YES</button>
+      <button class="no" onclick="sayNo()">NO</button>
     </div>
 
     <div class="gifts" id="gifts">
-      <h2>Choose your gift 🎁</h2>
+      <h2>SELECT YOUR REWARD 🎁</h2>
       <div class="gift-grid">
-        <div class="gift" onclick="submitGift('Running Shoes')">👟 Running Shoes</div>
-        <div class="gift" onclick="submitGift('New Dress')">👗 New Dress</div>
-        <div class="gift" onclick="submitGift('Jewellery')">💎 Jewellery</div>
-        <div class="gift" onclick="submitGift('Surprise')">🎉 Surprise</div>
+        <div class="gift" onclick="submitGift('Running Shoes')">👟 SHOES</div>
+        <div class="gift" onclick="submitGift('New Dress')">👗 DRESS</div>
+        <div class="gift" onclick="submitGift('Jewellery')">💎 JEWEL</div>
+        <div class="gift" onclick="submitGift('Surprise')">🎉 ???</div>
       </div>
     </div>
 
     <footer>
-      Made with ❤️ just for you
+      INSERT COIN ❤️
     </footer>
   </div>
 
@@ -174,19 +150,20 @@
       document.getElementById("gifts").style.display = "block";
 
       confetti({
-        particleCount: 150,
-        spread: 70,
+        particleCount: 120,
+        spread: 80,
         origin: { y: 0.6 }
       });
     }
 
     function sayNo() {
-      alert("Are you sure? 😢 I’ll still be cute about it.");
+      alert("GAME OVER 💔 (Are you sure?)");
     }
 
     function submitGift(gift) {
-      alert("Yay! ❤️ I can’t wait!");
+      alert("LEVEL UP ❤️");
 
+      // EXACT Google Form you shared
       const url =
         "https://docs.google.com/forms/d/e/1FAIpQLSePfwmWDoO-galMXmkflOLfRigAGAdzQRXw0JxKXfw0HGX76A/formResponse?" +
         "entry.865617330=Yes&entry.1924541378=" + encodeURIComponent(gift);
