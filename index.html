@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Will You Be My Valentine? 💖</title>
+
+  <style>
+    body {
+      background: linear-gradient(#ffdee9, #b5fffc);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      padding-top: 50px;
+    }
+
+    h1 {
+      font-size: 40px;
+      color: #ff3366;
+    }
+
+    button {
+      padding: 12px 24px;
+      margin: 10px;
+      font-size: 18px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+    }
+
+    .yes { background-color: #ff4d6d; color: white; }
+    .no { background-color: #adb5bd; }
+
+    .gift {
+      background-color: #ffd166;
+      margin: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 🎵 Background Music -->
+  <audio autoplay loop>
+    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_6b9a8f9c62.mp3" type="audio/mpeg">
+  </audio>
+
+  <h1>Will you be my Valentine? 💘</h1>
+
+  <button class="yes" onclick="yesClicked()">Yes 💕</button>
+  <button class="no" onclick="moveNo(this)">No 🙈</button>
+
+  <h2 id="giftText" style="display:none;">Choose your gift 🎁</h2>
+
+  <div id="gifts" style="display:none;">
+    <button class="gift" onclick="submitGift('Running Shoes')">👟 Running Shoes</button>
+    <button class="gift" onclick="submitGift('New Dress')">👗 New Dress</button>
+    <button class="gift" onclick="submitGift('Jewellery')">💍 Jewellery</button>
+    <button class="gift" onclick="submitGift('Surprise')">🎉 Surprise</button>
+  </div>
+
+  <script>
+    function yesClicked() {
+      document.getElementById("giftText").style.display = "block";
+      document.getElementById("gifts").style.display = "block";
+    }
+
+    function moveNo(btn) {
+      btn.style.position = "absolute";
+      btn.style.left = Math.random() * window.innerWidth + "px";
+      btn.style.top = Math.random() * window.innerHeight + "px";
+    }
+
+    function submitGift(gift) {
+      alert("Yay! ❤️ I can't wait!");
+
+      // 👇 GOOGLE FORM SUBMISSION
+      window.location.href =
+        "https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse?" +
+        "entry.123456=Yes&entry.654321=" + encodeURIComponent(gift);
+    }
+  </script>
+
+</body>
+</html>
